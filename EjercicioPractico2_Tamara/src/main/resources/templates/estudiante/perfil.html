@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: body">
+<body>
+
+<h2>Mi perfil</h2>
+
+<p><b>Nombre:</b> <span th:text="${usuario.nombre}"></span></p>
+<p><b>Email:</b> <span th:text="${usuario.email}"></span></p>
+<p><b>Rol:</b> <span th:text="${usuario.rol.nombre}"></span></p>
+
+</body>
+</html>

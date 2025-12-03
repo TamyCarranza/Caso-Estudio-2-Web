@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Detalle Usuario</title>
+</head>
+<body>
+
+<div th:insert="~{fragments/header :: header}"></div>
+
+<h2>Detalle de Usuario</h2>
+
+<p><strong>ID:</strong> <span th:text="${usuario.id}"></span></p>
+<p><strong>Nombre:</strong> <span th:text="${usuario.nombre}"></span></p>
+<p><strong>Apellido:</strong> <span th:text="${usuario.apellido}"></span></p>
+<p><strong>Email:</strong> <span th:text="${usuario.email}"></span></p>
+<p><strong>Rol:</strong> <span th:text="${usuario.rol.nombre}"></span></p>
+<p><strong>Activo:</strong> <span th:text="${usuario.activo}"></span></p>
+<p><strong>Fecha creación:</strong> <span th:text="${usuario.fechaCreacion}"></span></p>
+
+<a th:href="@{/admin/usuarios}">Volver</a>
+
+<div th:insert="~{fragments/footer :: footer}"></div>
+</body>
+</html>

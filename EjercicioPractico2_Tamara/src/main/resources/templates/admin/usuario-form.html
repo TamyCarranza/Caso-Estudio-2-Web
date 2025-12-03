@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Usuario</title>
+</head>
+<body>
+
+<div th:insert="~{fragments/header :: header}"></div>
+
+<h2 th:text="${usuario.id == null} ? 'Nuevo Usuario' : 'Editar Usuario'"></h2>
+
+<form th:action="@{/admin/usuarios/guardar}" th:object="${usuario}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+
+    <label>Nombre:</label><br/>
+    <input type="text" th:field="*{nombre}" required/><br/><br/>
+
+    <label>Apellido:</label><br/>
+    <input type="text" th:field="*{apellido}" required/><br/><br/>
+
+    <label>Email:</label><br/>
+    <input type="email" th:field="*{email}" required/><br/><br/>
+
+    <label>Contraseña:</label><br/>
+    <input type="password" th:field="*{password}" required/><br/><br/>
+
+    <label>Rol:</label><br/>
+    <select name="rolId" required>
+        <option value="">-- Seleccione un rol --</option>
+        <option th:each="r : ${roles}"
+                th:value="${r.id}"
+                th:text="${r.nombre}"
+                th:selected="${usuario.rol != null} ? ${r.id} == ${usuario.rol.id} : false">
+        </option>
+    </select><br/><br/>
+
+    <label>Activo:</label>
+    <input type="checkbox" th:field="*{activo}"/><br/><br/>
+
+    <button type="submit">Guardar</button>
+</form>
+
+<div th:insert="~{fragments/footer :: footer}"></div>
+</body>
+</html>
